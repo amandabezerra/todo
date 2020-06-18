@@ -1,0 +1,17 @@
+li {
+  border-bottom: 1px solid lightgray;
+
+  text-align: left;
+  
+  margin: 8px;
+  padding: 16px;
+}
+
+li span {
+  padding-left: 16px;
+}
+
+.completed {
+  opacity: 0.5;
+  text-decoration: line-through;
+}

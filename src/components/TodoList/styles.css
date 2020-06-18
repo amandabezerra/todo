@@ -1,0 +1,12 @@
+ul {
+  grid-template-columns: repeat(1, 50%);
+  grid-gap: 10px;
+
+  list-style: none;
+
+  padding-top: 24px;
+  text-align: center;
+
+  margin-left: 30px;
+  margin-right: 30px;
+}
