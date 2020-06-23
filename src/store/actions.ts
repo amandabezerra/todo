@@ -1,6 +1,6 @@
 import { ITodo, TodoActionTypes, ADD_TODO, TOGGLE_TODO } from './types';
 
-let nextTodoId = 1;
+let nextTodoId = 0;
 
 export function addTodo(newTodo: ITodo): TodoActionTypes {
   return {

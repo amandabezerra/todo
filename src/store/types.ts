@@ -12,13 +12,13 @@ export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'DELETE_TODO';
 
 interface AddTodoAction {
-  type: typeof ADD_TODO
-  payload: ITodo
+  type: typeof ADD_TODO;
+  payload: ITodo;
 }
 
 interface ToggleTodoAction {
-  type: typeof TOGGLE_TODO
-  payload: ITodo
+  type: typeof TOGGLE_TODO;
+  payload: ITodo;
 }
 
-export type TodoActionTypes = AddTodoAction | ToggleTodoAction
+export type TodoActionTypes = AddTodoAction | ToggleTodoAction;
