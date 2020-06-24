@@ -1,11 +1,14 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { connect } from 'react-redux';
-import { RootState } from '../../store';
 import { addTodo } from '../../store/actions';
 
 import './styles.css';
 
-const AddTodo = ({...todos }) => {
+interface IProps {
+  dispatch: Function;
+}
+
+const AddTodo: React.FC<IProps> = ({dispatch}) => {
   const [todo, setTodo] = useState('');
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
@@ -16,7 +19,7 @@ const AddTodo = ({...todos }) => {
   function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
-    todos.dispatch(addTodo({ text: todo, completed: false }));
+    dispatch(addTodo(todo));
 
     setTodo('');
   }
@@ -43,8 +46,4 @@ const AddTodo = ({...todos }) => {
   );
 }
 
-const mapStateToProps = (state: RootState) => ({
-  todoReducer: state.todoReducer
-});
-
-export default connect(mapStateToProps)(AddTodo);
+export default connect()(AddTodo);

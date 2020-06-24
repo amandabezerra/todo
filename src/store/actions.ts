@@ -1,17 +1,17 @@
-import { ITodo, TodoActionTypes, ADD_TODO, TOGGLE_TODO } from './types';
+import { ITodoActionTypes, ADD_TODO, TOGGLE_TODO } from './types';
 
 let nextTodoId = 0;
 
-export function addTodo(newTodo: ITodo): TodoActionTypes {
+export function addTodo(text: string): ITodoActionTypes {
   return {
     type: ADD_TODO,
-    payload: { ...newTodo, id: nextTodoId++ }
+    payload: { id: nextTodoId++, text: text, completed: false }
   }
 }
 
-export function toggleTodo(todo: ITodo): TodoActionTypes {
+export function toggleTodo(id: number): ITodoActionTypes {
   return {
     type: TOGGLE_TODO,
-    payload: todo
+    payload: id
   }
 }

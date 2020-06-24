@@ -1,20 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { RootState } from '../../store';
 import { toggleTodo } from '../../store/actions';
+
+import { ITodo } from '../../store/types';
 
 import './styles.css';
 
+interface IProps {
+  todo: ITodo;
+  dispatch: Function;
+}
 
-const Todo = ({...props}) => {
+const Todo: React.FC<IProps> = ({todo, dispatch}) => {
   function handleTodoClick() {
-    props.dispatch(
-      toggleTodo({
-        id: props.id,
-        text: props.text,
-        completed: props.completed
-      })
-    )
+    dispatch(toggleTodo(todo.id));
   }
 
   return(
@@ -22,18 +21,14 @@ const Todo = ({...props}) => {
       <input
         name="completed"
         type="checkbox"
-        checked={props.completed}
+        checked={todo.completed}
         onChange={handleTodoClick}
       />
-      <span className={props.completed ? 'completed' : ''}>
-        {props.text}
+      <span className={todo.completed ? 'completed' : ''}>
+        {todo.text}
       </span>
     </li>
   );
 }
 
-const mapStateToProps = (state: RootState) => ({
-  props: state.todoReducer
-});
-
-export default connect(mapStateToProps)(Todo);
+export default connect()(Todo);

@@ -7,16 +7,18 @@ import Todo from '../Todo';
 
 import './styles.css';
 
-const TodoList = ({...props}) => {
+interface IProps {
+  todos: ITodo[];
+}
+
+const TodoList: React.FC<IProps> = ({todos}) => {
   return (
     <ul>
-      {props.todoList && props.todoList[0] ?
-        props.todoList.map((todo: ITodo, index: number) => {
+      {todos && todos[0] ?
+        todos.map((todo: ITodo) => {
           return <Todo
-            key={index}
-            id={todo.id}
-            text={todo.text}
-            completed={todo.completed} 
+            key={todo.id}
+            todo={todo}
           />
         }) : <span>No todos to do!</span>
       }
@@ -25,7 +27,7 @@ const TodoList = ({...props}) => {
 }
 
 const mapStateToProps = (state: RootState) => ({
-  todoList: state.todoReducer.todos
+  todos: state.todoReducer.todos
 });
 
 export default connect(mapStateToProps)(TodoList);

@@ -1,18 +1,18 @@
 import { 
-  TodoListState,
-  TodoActionTypes,
+  ITodoListState,
+  ITodoActionTypes,
   ADD_TODO,
   TOGGLE_TODO 
 } from './types';
 
-const initialState: TodoListState = {
+const initialState: ITodoListState = {
   todos: [],
 }
 
 export function todoListReducer(
   state = initialState,
-  action: TodoActionTypes
-): TodoListState {
+  action: ITodoActionTypes
+): ITodoListState {
   switch (action.type) {
     case ADD_TODO:
       return {
@@ -31,7 +31,7 @@ export function todoListReducer(
       return {
         todos: state.todos
           .map(todo => 
-            todo.id === action.payload.id ? 
+            todo.id === action.payload ?
             {...todo, completed: !todo.completed } : 
             todo
           )

@@ -1,24 +1,24 @@
 export interface ITodo {
-  id?: number;
+  id: number;
   text: string;
   completed: boolean;
 }
 
-export interface TodoListState {
+export interface ITodoListState {
   todos: ITodo[];
 }
 
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_TODO = 'DELETE_TODO';
 
-interface AddTodoAction {
+interface IAddTodoAction {
   type: typeof ADD_TODO;
   payload: ITodo;
 }
 
-interface ToggleTodoAction {
+interface IToggleTodoAction {
   type: typeof TOGGLE_TODO;
-  payload: ITodo;
+  payload: number;
 }
 
-export type TodoActionTypes = AddTodoAction | ToggleTodoAction;
+export type ITodoActionTypes = IAddTodoAction | IToggleTodoAction;
